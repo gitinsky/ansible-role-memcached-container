@@ -1,0 +1,12 @@
+---
+- name: check if a memcached container is started
+  command: bash -c "docker ps | grep memcached"
+  ignore_errors: True
+  register: result
+
+- name: start a memcached container
+  command: docker run -d
+            -p {{ memcached_port }}:11211
+            --restart=always
+            --name=memcached gitinsky/memcached:0.1.0
+  when: result|failed
