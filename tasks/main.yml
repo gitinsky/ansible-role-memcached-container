@@ -8,5 +8,5 @@
   command: docker run -d
             -p {{ memcached_port }}:11211
             --restart=always
-            --name=memcached gitinsky/memcached:0.1.0
+            --name=memcached gitinsky/memcached:0.1.1
   when: result|failed
