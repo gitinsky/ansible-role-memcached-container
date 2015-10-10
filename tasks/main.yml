@@ -7,6 +7,7 @@
 - name: start a memcached container
   command: docker run -d
             -p {{ memcached_port }}:11211
+            -e MEMORY_SIZE_IN_MB={{ memory_size_in_mb }}
             --restart=always
-            --name=memcached gitinsky/memcached:0.1.1
+            --name=memcached gitinsky/memcached:0.1.2
   when: result|failed
